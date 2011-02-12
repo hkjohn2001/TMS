@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor   :password 
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :group_ids
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -14,9 +14,20 @@ class User < ActiveRecord::Base
                        :length => { :within => 6..40 }
 
   before_save :encrypt_password
+  
+  has_many :memberships
+  has_many :groups, :through => :memberships
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
+  end 
+  
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else 
+      find(:all)
+    end
   end 
 
   class << self

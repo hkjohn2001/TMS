@@ -1,3 +1,29 @@
+<h1>Show User</h1>
+<p id="notice"><%= notice %></p>
+
 <ul class="users">	
-	<%= @user.name %>
+	
+	<p>
+		<b>Name:</b>
+		<%= @user.name %></br>
+		<b>Email:</b>
+		<%= @user.email %></br>
+	</p>
+	
+	<table>
+	  <tr>
+	    <th>Group Membership</th>
+	  </tr>
+
+	  <% @user.groups.each do |group| %>
+	    <tr>
+	      <td><%= group.name %></td>
+	    </tr>
+	  <% end %>
+	</table>
+	
 </ul>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

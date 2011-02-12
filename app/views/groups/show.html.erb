@@ -1,0 +1,26 @@
+<h1>Show Group</h1>
+<p id="notice"><%= notice %></p>
+
+<ul class="groups">	
+	<p>
+	  <b>Name:</b>
+	  <%= @group.name %>
+	</p>
+
+	<table>
+	  <tr>
+	    <th>Group Members</th>
+	  </tr>
+
+	<% @group.users.each do |user| %>
+	  <tr>
+	    <td><%= user.name %></td>
+	  </tr>
+	<% end %>
+
+	</table>
+</ul>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

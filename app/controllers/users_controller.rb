@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_filter :authenticate, :except => [:show, :new, :create]
   
   def show 
       @user = User.find(params[:id])
@@ -8,6 +9,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @title = "Sign Up"
+  end
+  
+  def index
+    @user = User.search(params[:search]) 
+    @title = "All users"
   end
 
   def create

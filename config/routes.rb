@@ -1,5 +1,9 @@
 TMS::Application.routes.draw do
   
+  resources :memberships
+
+  resources :groups
+
   get "sessions/new"
   get "users/new"
 
@@ -7,6 +11,7 @@ TMS::Application.routes.draw do
   
   resources :sessions, :only => [:new, :create, :destroy]
   resources :users
+  resources :groups
 
   match '/home', :to => 'pages#home'
   match '/contact', :to => 'pages#contact'

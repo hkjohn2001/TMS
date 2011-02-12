@@ -1,6 +1,6 @@
-<h1>Edit user</h1>
+<h1>Edit User</h1>
 
-<%= form_for(@user) do |f| %>
+<%= semantic_form_for(@user) do |f| %>
  <%= render 'fields', :f => f %>
 
  <div class="actions">
@@ -8,3 +8,6 @@
  </div>
 
 <% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

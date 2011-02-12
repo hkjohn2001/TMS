@@ -1,0 +1,16 @@
+<h1>New Group</h1>
+
+<% semantic_form_for @group do |f| %>
+	<% f.inputs do %>
+		<%= f.input :name %>
+	<% end %>
+
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
+	
+	<%= link_to 'Back', groups_path %>
+	
+<% end %>
+
+
